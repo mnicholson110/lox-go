@@ -35,8 +35,8 @@ func runFile(path string) {
 }
 
 func runPrompt() {
+	fmt.Println("Welcome to Lox! Press Ctrl+C to exit.")
 	for {
-		fmt.Println("Welcome to Lox! Press Ctrl+C to exit.")
 		fmt.Print("> ")
 		reader := bufio.NewReader(os.Stdin)
 		line, err := reader.ReadString('\n')
@@ -52,12 +52,11 @@ func run(source string) {
 	scanner := lox.NewScanner(source)
 	tokens := scanner.ScanTokens()
 
+	if tokens == nil {
+		return
+	}
+
 	for _, token := range tokens {
 		fmt.Println(token)
 	}
-}
-
-func LoxError(line int, message string) {
-	lox.ErrorHandle(line, message)
-	hadError = true
 }
