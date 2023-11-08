@@ -11,6 +11,15 @@ import (
 var hadError bool = false
 
 func main() {
+	//	expression := lox.NewBinary(
+	//		lox.NewUnary(
+	//			lox.Token{lox.MINUS, "-", nil, 1},
+	//			lox.NewLiteral(123)),
+	//		lox.Token{lox.STAR, "*", nil, 1},
+	//		lox.NewGrouping(lox.NewLiteral(45.67)))
+	//
+	//	fmt.Println(expression.AstPrint())
+
 	switch len(os.Args[1:]) {
 	case 0:
 		runPrompt()
