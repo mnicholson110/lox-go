@@ -10,7 +10,7 @@ type Expr interface {
 
 type Binary struct {
 	left     Expr
-	operator Token
+	operator *Token
 	right    Expr
 }
 
@@ -23,7 +23,7 @@ type Literal struct {
 }
 
 type Unary struct {
-	operator Token
+	operator *Token
 	right    Expr
 }
 
@@ -66,7 +66,7 @@ func (u *Unary) AstPrint() string {
 }
 
 // Constructors
-func NewBinary(left Expr, operator Token, right Expr) *Binary {
+func NewBinary(left Expr, operator *Token, right Expr) *Binary {
 	return &Binary{left, operator, right}
 }
 
@@ -78,6 +78,6 @@ func NewLiteral(value interface{}) *Literal {
 	return &Literal{value}
 }
 
-func NewUnary(operator Token, right Expr) *Unary {
+func NewUnary(operator *Token, right Expr) *Unary {
 	return &Unary{operator, right}
 }

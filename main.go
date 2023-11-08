@@ -60,12 +60,12 @@ func runPrompt() {
 func run(source string) {
 	scanner := lox.NewScanner(source)
 	tokens := scanner.ScanTokens()
-
-	if tokens == nil {
+	parser := lox.NewParser(tokens)
+	expression, err := parser.Parse()
+	if err != nil {
+		hadError = true
 		return
 	}
 
-	for _, token := range tokens {
-		fmt.Println(token)
-	}
+	fmt.Println(expression.AstPrint())
 }
